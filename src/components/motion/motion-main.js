@@ -16,10 +16,11 @@ const MainMotion = () => {
           className="Welcome-box py-[8px] px-[20px] border border-[#7042f88b] opacity-[0.9]"
         >
           <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
-          <a href="https://www.canva.com/design/DAFtyKTtm6k/hNh_FwmuiMQ8oRyncmbjxw/view?utm_content=DAFtyKTtm6k&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" download>
-            <h1 className="Welcome-text text-[13px]">
-              Fullstack Developer Rusme
-            </h1>
+          <a
+            href="https://www.canva.com/design/DAFtmR4yuhw/SI_jD9rc0IUzxwF2leX_gA/view?utm_content=DAFtmR4yuhw&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+            download
+          >
+            <h1 className="Welcome-text text-[15px] font-code">My Rusme</h1>
           </a>
         </motion.div>
 
@@ -37,9 +38,10 @@ const MainMotion = () => {
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
-          I&apos;touched the stars, and saw the glorious light of a thousand
-          suns! Now, blinded by this elegance, how could my purpose be
-          anything... but dark...
+          I&apos;As a Full Stack Developer, I bring a comprehensive skill set
+          encompassing both front-end and back-end technologies. Proficient in
+          HTML, CSS, JavaScript, Node.js, and a variety of databases, including
+          MongoDB and SQL.
         </motion.p>
       </div>
 
