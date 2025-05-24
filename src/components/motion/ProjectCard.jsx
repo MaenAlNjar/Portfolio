@@ -1,54 +1,57 @@
 import React from "react";
 import { projects } from "../../constants";
 import Section from "../Section";
-import { GradientLight } from "../design";
 import ClipPath from "../ClipPath";
+
 const ProjectCard = () => {
   return (
     <Section id="features">
-      <div className="container relative z-50">
-        <div className="flex flex-wrap gap-10 mb-10">
+      <div className="container relative">
+        <div className="flex flex-wrap gap-10 justify-center">
           {projects.map((item) => (
             <div
-              className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"
               key={item.id}
+              className="group relative bg-n-8 rounded-xl overflow-hidden md:w-[24rem] min-h-[22rem]"
+              style={{ clipPath: "url(#benefits)" }}
             >
-              <div className="relative z-2 flex flex-col min-h-[22rem] p-[2.4rem]">
-                <h5 className="h5 mb-5">{item.title}</h5>
-                <p className="body-2 mb-6 text-n-3">{item.description}</p>
-                <div className="flex items-center mt-auto">
+              {/* خلفية الصورة عند الهوفر */}
+              {item.imagUrl && (
+                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                  <img
+                    src={item.imagUrl}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+
+              {/* محتوى الكارد */}
+              <div className="relative z-10 p-6 flex flex-col h-full">
+                <h5 className="text-xl font-semibold text-white mb-4">
+                  {item.title}
+                </h5>
+                <p className="text-sm text-gray-400 mb-6">{item.description}</p>
+                <div className="mt-auto flex gap-4">
                   <a
-                    className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider"
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-white uppercase"
                   >
-                    GIT HUB
+                    GitHub
                   </a>
                   <a
-                    className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider"
-                    herf={item.deploy}
+                    href={item.deploy}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-white uppercase"
                   >
-                    DEPLOY
+                    Deploy
                   </a>
                 </div>
               </div>
 
-              <div
-                className="absolute inset-0.5 bg-n-8"
-                style={{ clipPath: "url(#benefits)" }}
-              >
-                <div className="absolute inset-0 opacity-0 transition-opacity hover:opacity-20">
-                  {item.src && (
-                    <img
-                      src={item.imagUrl}
-                      width={380}
-                      height={362}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                </div>
-              </div>
-
+              {/* Clip Path SVG */}
               <ClipPath />
             </div>
           ))}

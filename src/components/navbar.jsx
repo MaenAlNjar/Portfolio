@@ -1,81 +1,104 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import MenuSvg from "./menuSvg.jsx";
-import Button from "./Button.jsx";
 import Header from "../Image/Header.png";
 import { navigation } from "../constants.js";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import { HamburgerMenu } from "./design.jsx";
-import { useState } from "react";
+import Button from "./Button.jsx";
+import MenuSvg from "./menuSvg.jsx";
+
 const NavBar = () => {
-  const pathname = useLocation();
+  const { hash } = useLocation();
+  const [open, setOpen] = useState(false);
 
-  const [openNavigation, setOpenNavigation] = useState(false);
+  const toggleMenu = () => {
+    setOpen(!open);
+    open ? enablePageScroll() : disablePageScroll();
+  };
 
-  const toggleNavigation = () => {
-    if (openNavigation) {
-      setOpenNavigation(false);
+  const closeMenu = () => {
+    if (open) {
+      setOpen(false);
       enablePageScroll();
-    } else {
-      setOpenNavigation(true);
-      disablePageScroll();
     }
   };
-  const handleClick = () => {
-    if (!openNavigation) return;
 
-    enablePageScroll();
-    setOpenNavigation(false);
-  };
   return (
-    <div
-      className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
-        openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-n-6 ${
+        open ? "bg-n-8" : "bg-n-8/90 backdrop-blur-md"
       }`}
     >
-      <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a className="block w-[12rem] xl:mr-8" href="#hero">
-          <img src={Header} alt="notwork" width={180} height={40} />
+      <div className="container mx-auto px-5 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#hero" className="block w-[10rem] xl:w-[12rem]">
+          <img src={Header} alt="Logo" className="w-full h-auto" />
         </a>
-        <nav className="hidden fixed top-[5rem] left-0 right-0 bottom-0 bg-neutral-900 lg:static lg:flex lg:mx-auto lg:bg-transparent">
-          <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
-            {navigation.map((item) => (
-              <a
-                key={item.id}
-                href={item.url}
-                onClick={handleClick}
-                className={`block relative font-code text-2xl ml-20 uppercase text-n-1 transition-colors hover:text-color-1 ${
-                  item.onlyMobile ? "lg:hidden" : ""
-                } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
-                  item.url === pathname.hash
-                    ? "z-2 lg:text-n-1"
-                    : "lg:text-n-1/50"
-                } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
-              >
-                {item.title}
-              </a>
-            ))}
-          </div>
-          <HamburgerMenu />
-        </nav>
-        <a
-          href="https://www.linkedin.com/in/maenalnjar/"
-          className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
-        >
-          linkedin 
-        </a>
-        <Button className="hidden lg:flex" href="https://github.com/MaenAlNjar">
-          GITHUB
-        </Button>
 
-        <Button
-          className="ml-auto lg:hidden"
-          px="px-3"
-          onClick={toggleNavigation}
-        >
-          <MenuSvg openNavigation={openNavigation} />
-        </Button>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navigation.map((item) => (
+            <a
+              key={item.id}
+              href={item.url}
+              onClick={closeMenu}
+              className={`font-code text-sm uppercase tracking-wider transition-all duration-200 hover:text-color-1 ${
+                item.url === hash
+                  ? "font-bold text-color-1"
+                  : "text-n-1/60 hover:text-n-1"
+              }`}
+            >
+              {item.title}
+            </a>
+          ))}
+        </nav>
+
+        {/* Right Links */}
+        <div className="hidden lg:flex items-center gap-4">
+          <a
+            href="https://www.linkedin.com/in/maenalnjar/"
+            className="text-sm text-n-1/50 hover:text-n-1 transition-colors"
+          >
+            LinkedIn
+          </a>
+          <Button href="https://github.com/MaenAlNjar">GitHub</Button>
+        </div>
+
+        {/* Hamburger Button */}
+        <div className="lg:hidden">
+          <Button px="px-3" onClick={toggleMenu}>
+            <MenuSvg openNavigation={open} />
+          </Button>
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden fixed top-[4.5rem] left-0 right-0 bg-n-8 overflow-hidden transition-all duration-300 ${
+          open ? "h-[100vh]" : "h-0"
+        }`}
+      >
+        <nav className="flex flex-col items-center gap-6 mt-10">
+          {navigation.map((item) => (
+            <a
+              key={item.id}
+              href={item.url}
+              onClick={closeMenu}
+              className="font-code text-base text-n-1 uppercase tracking-widest hover:text-color-1"
+            >
+              {item.title}
+            </a>
+          ))}
+          <a
+            href="https://www.linkedin.com/in/maenalnjar/"
+            className="text-n-1/50 hover:text-n-1 transition-colors"
+          >
+            LinkedIn
+          </a>
+          <Button href="https://github.com/MaenAlNjar">GitHub</Button>
+        </nav>
+      </div>
+    </header>
   );
 };
+
 export default NavBar;

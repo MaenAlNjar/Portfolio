@@ -194,7 +194,7 @@ export const projects = [
   {
     id: "1",
     src: "https://res.cloudinary.com/dmhvb05w3/image/upload/v1698863053/Untitled_design_tf1k3r.png",
-    title: "Project-4-Social Media",
+    title: "-Social Media",
     description:
       "Social media application with management features, user account,comment with photo, add friend, profile, change user data, chat between users.",
     imagUrl:
@@ -206,7 +206,7 @@ export const projects = [
   {
     id: "2",
     src: "https://res.cloudinary.com/dmhvb05w3/image/upload/v1698863053/Untitled_design_1_vfhg6s.png",
-    title: "Project-5-Legea of runine",
+    title: "-Legea of runine",
     description:
       "Card game app with management features, Source for cards, Shop to buy cards, ability to see online users, make card fight with another user, admin page, the profile can user customize it with design he wants.",
     imagUrl:
@@ -217,7 +217,7 @@ export const projects = [
   {
     id: "3",
     src: "https://res.cloudinary.com/dmhvb05w3/image/upload/v1698863053/Untitled_design_tf1k3r.png",
-    title: "Project Blog-Nextjs",
+    title: " Blog-Nextjs",
     description:
       "Blog app using nextjs with server action ,auth js ,with basic CRUD functionality",
     imagUrl:
@@ -228,12 +228,35 @@ export const projects = [
   {
     id: "4",
     src: "https://res.cloudinary.com/dmhvb05w3/image/upload/v1698863053/Untitled_design_tf1k3r.png",
-    title: "Project School-Laravel",
+    title: " School-Laravel",
     description:
       "A school website through which it is possible to add a school, appoint a principal and teaching staff, add class students, specify student grades, determine the class schedule for each class, and determine the specialization of a teacher and each class he teaches.",
     imagUrl:
       "https://res.cloudinary.com/dmhvb05w3/image/upload/v1711955241/laravel_qw53o2.jpg",
     href: "https://github.com/MaenAlNjar/ATLS-PHP-Laravel",
+    deploy: "",
+  },
+  {
+    id: "5",
+    src: "https://res.cloudinary.com/dmhvb05w3/image/upload/v1698863053/Untitled_design_tf1k3r.png",
+    title: "Online Shope",
+    description:
+      "a robust e-commerce platform using ASP.NET Core MVC, featuring user authentication, product management, and order processing ",
+    imagUrl:
+      "https://res.cloudinary.com/dmhvb05w3/image/upload/v1748094064/png-clipart-brand-logo-microsoft-net-and-sap-microsoft-lumia-paperback-framework-icon-purple-blue-removebg-preview_ymdfbl.png",
+    href: "https://github.com/NewAraWithDotNet/ECOM",
+    deploy: "",
+  },
+  {
+    id: "6",
+    src: "https://res.cloudinary.com/dmhvb05w3/image/upload/v1698863053/Untitled_design_tf1k3r.png",
+    title: "Desktop Timer app",
+    description:
+      "A smart desktop application built with Electron.js to help users manage their time more effectively. It features multiple customizable timers, allowing users to track various tasks simultaneously. Whether for work, study, or breaks, this app boosts focus and productivity by making time management simple and efficient.",
+
+    imagUrl:
+      "https://res.cloudinary.com/dmhvb05w3/image/upload/v1748094143/Electron_Software_Framework_Logo.svg_zeakjr.png",
+    href: "",
     deploy: "",
   },
 ];
